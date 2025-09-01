@@ -1,13 +1,13 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
-var pool  = mysql.createPool({
+const pool  = mysql.createPool({
   connectionLimit : 10,
   queueLimit: 100,
-  host : '127.0.0.1',
-  port : 3306,
-  user : 'arjun',
-  password : '',
-  database : 'mysqldb',
+  host : process.env.DB_HOST || 'db',
+  port : process.env.DB_PORT || 3306,
+  user : process.env.DB_USER || 'root',
+  password : process.env.DB_PASS || 'superpassword123',
+  database : process.env.DB_NAME || 'mysqldb',
   connectTimeout : 10000,
   waitForConnections: true,
   acquireTimeout: 10000,
